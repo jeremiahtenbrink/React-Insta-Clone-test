@@ -1,0 +1,13 @@
+.ui.card {
+
+  width: max-content;
+
+  &.post {
+    margin-top: 2rem;
+  }
+
+  & > .imgage {
+    object-fit: cover;
+  }
+
+}

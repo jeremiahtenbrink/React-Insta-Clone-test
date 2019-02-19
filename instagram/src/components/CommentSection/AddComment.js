@@ -4,14 +4,14 @@ import { Form, Input, Button, Icon } from "semantic-ui-react";
 
 const AddComment = ( props ) => {
     return (
-        <Form>
-            <Form.Field>
-                <Input placeholder={ "Add a comment..." } />
-            </Form.Field>
-            <Form.Field>
-                <Button icon>
-                    <Icon name="ellipsis horizontal"></Icon>
-                </Button>
+        <Form className={ "add-comment-section" }>
+            <Form.Field className={ "add-comment-section__input" }>
+                <Input
+                    placeholder={ "Add a comment..." } icon={
+                    <Button icon>
+                        <Icon name="ellipsis horizontal"></Icon>
+                    </Button>
+                } />
             </Form.Field>
         </Form>
     );

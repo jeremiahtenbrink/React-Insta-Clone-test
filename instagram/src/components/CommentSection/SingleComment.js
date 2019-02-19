@@ -4,14 +4,12 @@ import { Comment } from "semantic-ui-react";
 
 const SingleComment = ( { comment } ) => {
     return (
-        <div>
-            <Comment>
-                <Comment.Content>
-                    <Comment.Author as='a'>{ comment.username }</Comment.Author>
-                    <Comment.Text>{ comment.text }</Comment.Text>
-                </Comment.Content>
-            </Comment>
-        </div>
+        <Comment>
+            <Comment.Content>
+                <Comment.Author as='a'>{ comment.username }</Comment.Author>
+                <Comment.Text>{ comment.text }</Comment.Text>
+            </Comment.Content>
+        </Comment>
     );
 };
 

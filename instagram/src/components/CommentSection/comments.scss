@@ -1,0 +1,15 @@
+.comment-section {
+
+  margin-left: 1rem;
+}
+
+.add-comment-section {
+  display: flex;
+  width: 94%;
+  margin: 2% 0 2% 2rem;
+
+  &__input {
+    flex-grow: 1;
+  }
+
+}

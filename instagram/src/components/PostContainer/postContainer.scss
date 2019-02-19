@@ -11,3 +11,25 @@
   }
 
 }
+
+.post {
+
+  &__avatar {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+
+    &-name {
+      margin-left: 1rem;
+      font-size: 1.6rem;
+    }
+  }
+
+}
+
+.ui.card > .content > .header:not(.ui), .ui.cards > .card > .content > .header:not(.ui) {
+  margin-top: 1rem;
+}
+
+.card-meta {
+  margin-left: 1rem;
+}

@@ -1,3 +1,27 @@
 .like-comment-buttons {
   margin-top: 1rem;
 }
+
+.ui.button.comment-like-buttons {
+  color: black;
+  background-color: transparent;
+}
+
+.liked {
+  color: red;
+}
+
+.ui.form {
+  font-size: 1rem;
+  width: 80%;
+  margin-left: 2rem;
+}
+
+.ui.modal > .image.content {
+  justify-content: space-around;
+}
+
+.ui.icon.button, .ui.icon.buttons .button {
+  background-color: transparent;
+  color: black;
+}

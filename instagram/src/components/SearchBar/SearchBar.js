@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Grid, Form, Input, Segment, Divider, Container, Icon } from "semantic-ui-react";
 import "./searchBar.scss";
 
@@ -33,9 +34,11 @@ const SearchBar = ( props ) => {
                             computer={ 8 }>
                             <Form>
                                 <Form.Field>
-                                    <Input icon={ "search" } placeholder={ "Search..." } />
+                                    <Input
+                                        icon={ "search" }
+                                        placeholder={ "Search..." }
+                                        onChange={ props.handleSearch } />
                                 </Form.Field>
-                            
                             </Form>
                         </Grid.Column>
                         <Grid.Column
@@ -67,7 +70,9 @@ const SearchBar = ( props ) => {
     );
 };
 
-SearchBar.propTypes = {};
+SearchBar.propTypes = {
+    handleSearch: PropTypes.func.isRequired,
+};
 SearchBar.defaultProps = {};
 
 export default SearchBar;

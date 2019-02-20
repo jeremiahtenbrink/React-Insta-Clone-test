@@ -12,4 +12,9 @@
     flex-grow: 1;
   }
 
+  & .add-comment {
+    background-color: transparent;
+    transform: translateX(-3rem);
+  }
 }
+

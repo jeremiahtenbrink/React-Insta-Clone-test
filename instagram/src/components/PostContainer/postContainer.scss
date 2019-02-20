@@ -12,6 +12,10 @@
 
 }
 
+.post-container {
+  margin-bottom: 4rem;
+}
+
 .post {
 
   &__avatar {
@@ -23,7 +27,12 @@
       font-size: 1.6rem;
     }
   }
+}
 
+span.metadata {
+  font-size: 1rem;
+  color: grey;
+  margin-left: 2rem;
 }
 
 .ui.card > .content > .header:not(.ui), .ui.cards > .card > .content > .header:not(.ui) {

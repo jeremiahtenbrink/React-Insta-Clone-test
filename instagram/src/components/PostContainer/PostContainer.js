@@ -34,9 +34,9 @@ class PostContainer extends React.Component {
             }
             
             if( Moment( a.timestamp ).isBefore( b.timestamp ) ) {
-                return -1;
-            }else {
                 return 1;
+            }else {
+                return -1;
             }
         } );
         

@@ -68,7 +68,7 @@ class LikeCommentButtons extends React.Component {
         );
     }
     
-};
+}
 
 LikeCommentButtons.propTypes = {
     liked: PropTypes.bool,

@@ -8,13 +8,18 @@ import LikeCommentButtons from "../LikeCommentButtons/LikeCommentButtons";
 import Faker from "faker";
 import Moment from "moment";
 
+// contains one post
 class PostContainer extends React.Component {
     constructor( props ) {
         super( props );
+        // get post from props
         let post = this.props.post;
+        // check if the post has been liked by the current user or if it is null
         if( !post.liked ) {
+            // if false or null set to false
             post.liked = false;
         }
+        // sort the post comments
         post.comments.sort( ( a, b ) => {
             
             if( !a.avatar ) {
@@ -33,6 +38,7 @@ class PostContainer extends React.Component {
                 b.timestamp = Faker.fake( "{{date.past}}" );
             }
             
+            // check if post is before the other post
             if( Moment( a.timestamp ).isBefore( b.timestamp ) ) {
                 return 1;
             }else {
@@ -40,6 +46,7 @@ class PostContainer extends React.Component {
             }
         } );
         
+        // set the post to the state
         this.state = {
             post,
         };

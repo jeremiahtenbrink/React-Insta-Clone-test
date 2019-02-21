@@ -49,13 +49,14 @@ class PostContainer extends React.Component {
         // set the post to the state
         this.state = {
             post,
+            userName: this.props.userName
         };
     }
     
     addComment = event => {
         debugger;
         const newComment = {
-            username: Faker.fake( "{{internet.userName}}" ),
+            username: this.state.userName,
             text: event.target[ 0 ].value,
             timestamp: Moment.now(),
             avatar: Faker.fake( "{{image.avatar}}" )
@@ -92,30 +93,36 @@ class PostContainer extends React.Component {
     
     render() {
         return (
-            <Container text className={ "post-container" }>
+            <Container className={ "post-container" }>
                 <Card className={ "post" }>
                     <Card.Content>
-                        <Image
-                            src={ this.state.post.thumbnailUrl }
-                            avatar
-                            className={ "post__avatar" } />
-                        <span className="post__avatar-name">{ this.state.post.username }
-                            <span className="metadata">
+                        <div className="card-fistHalf">
+                            <Image
+                                src={ this.state.post.thumbnailUrl }
+                                avatar
+                                className={ "post__avatar" } />
+                            <span className="post__avatar-name">{ this.state.post.username }
+                                <span className="metadata">
                             { this.state.post && Moment( this.state.post.timestamp ).fromNow() }
                         </span>
                         </span>
-                        
-                        <Image src={ this.state.post.imageUrl } rounded />
-                        <LikeCommentButtons
-                            liked={ this.state.post.liked }
-                            onLikeClick={ this.like }
-                            imageUrl={ this.state.post.imageUrl }
-                            handleSubmit={ this.addComment }
-                        />
-                        <Card.Header className={ "post__likes" }>{ this.state.post.likes } likes</Card.Header>
+                            
+                            <Image src={ this.state.post.imageUrl } rounded />
+                            <LikeCommentButtons
+                                liked={ this.state.post.liked }
+                                onLikeClick={ this.like }
+                                imageUrl={ this.state.post.imageUrl }
+                                handleSubmit={ this.addComment }
+                            />
+                            <Card.Header className={ "post__likes" }>{ this.state.post.likes } likes</Card.Header>
+                        </div>
+                        <div className="card-second-half">
+                            
+                            <CommentSection comments={ this.state.post.comments } />
+                            <AddComment onAddComment={ this.addComment } />
+                        </div>
                     </Card.Content>
-                    <CommentSection comments={ this.state.post.comments } />
-                    <AddComment onAddComment={ this.addComment } />
+                
                 </Card>
             </Container>
         );

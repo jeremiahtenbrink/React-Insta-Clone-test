@@ -3,7 +3,7 @@ import React from "react";
 const authenticate = PostPage => Login => props => {
     
     if( props.login ) {
-        return <PostPage logoutFun={ props.logoutFun } />;
+        return <PostPage userName={ props.userName } logoutFun={ props.logoutFun } />;
     }else {
         return <Login loginFun={ props.loginFun } />;
     }

@@ -4,12 +4,28 @@
 
   &.post {
     margin-top: 2rem;
+    display: flex;
   }
 
   & > .imgage {
     object-fit: cover;
   }
 
+}
+
+.content {
+  display: flex;
+
+  & .card-first-half {
+    width: 48%;
+    max-height: max-content;
+  }
+
+  & .card-second-half {
+    width: 49%;
+    overflow-y: scroll;
+    max-height: 610px;
+  }
 }
 
 .post-container {

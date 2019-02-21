@@ -22,7 +22,7 @@ const SearchBar = ( props ) => {
                                 </Grid.Column>
                                 
                                 <Grid.Column width={ 9 }>
-                                    <h1>Instagram</h1>
+                                    <h1>InstaClone</h1>
                                 </Grid.Column>
                             </Grid>
                             <Divider vertical />
@@ -58,7 +58,7 @@ const SearchBar = ( props ) => {
                                     <Icon name="heart outline" size="large" />
                                 </Grid.Column>
                                 <Grid.Column className={ "search-bar__icon-small" }>
-                                    <Button onClick={ props.logoutFun }>
+                                    <Button onClick={ props.logoutFun } className="logout-button">
                                         <Icon name="user outline" size="large" />
                                     </Button>
                                 </Grid.Column>

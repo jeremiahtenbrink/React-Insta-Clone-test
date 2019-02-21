@@ -22,6 +22,8 @@ class PostPage extends Component {
             page: 1,
             // boolean value indicating if data should be stored or not
             storeData: false,
+            
+            userName: this.props.userName
         };
     }
     
@@ -233,13 +235,15 @@ class PostPage extends Component {
     render() {
         return (
             <div>
-                <SearchBar handleSearch={ this.handleSearch} logoutFun={this.props.logoutFun } />
+                <SearchBar handleSearch={ this.handleSearch } logoutFun={ this.props.logoutFun } />
                 {/*if we have state data then map over it and create a PostContainer for each post*/ }
                 { this.state.data && this.state.data.map( ( data ) => {
                     return <PostContainer
                         key={ data.username }
                         post={ data }
-                        setDataStorage={ this.editPostDataStorage } />;
+                        setDataStorage={ this.editPostDataStorage }
+                        userName={ this.state.userName }
+                    />;
                 } ) }
                 {/*create the divider at the bottom with a link to load more posts*/ }
                 <Divider horizontal><a onClick={ this.loadMore }>Load More</a></Divider>

@@ -90,7 +90,7 @@ class Login extends React.Component {
                             </Form.Field>
                             <Form.Field>
                                 <label>Password</label>
-                                <input placeholder="password" />
+                                <input placeholder="password" type="password" />
                             </Form.Field>
                             <Button type={ "submit" } className="login-button">Submit</Button>
                         </Form>

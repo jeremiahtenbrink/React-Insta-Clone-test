@@ -54,12 +54,18 @@ class PostContainer extends React.Component {
     }
     
     addComment = event => {
-        debugger;
+        let avatar = "";
+        if( localStorage.getItem( "avatar" ) ) {
+            avatar = localStorage.getItem( "avatar" );
+        }else {
+            avatar = Faker.fake( "{{image.avatar}}" );
+        }
+        
         const newComment = {
             username: this.state.userName,
             text: event.target[ 0 ].value,
             timestamp: Moment.now(),
-            avatar: Faker.fake( "{{image.avatar}}" )
+            avatar: avatar
         };
         
         this.setState( ( state ) => {

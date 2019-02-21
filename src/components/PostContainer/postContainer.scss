@@ -16,16 +16,31 @@
 .content {
   display: flex;
 
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+
   & .card-first-half {
-    width: 48%;
+    width: 50%;
     max-height: max-content;
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+    }
   }
 
   & .card-second-half {
-    width: 49%;
+    width: 50%;
     overflow-y: scroll;
     max-height: 610px;
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+    }
   }
+}
+
+.content-tablet {
+  display: flex;
+  flex-direction: column;
 }
 
 .post-container {

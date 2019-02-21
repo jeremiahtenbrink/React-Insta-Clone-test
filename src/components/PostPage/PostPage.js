@@ -6,7 +6,7 @@ import Faker from "faker";
 import Moment from "moment";
 import SearchBar from "../SearchBar/SearchBar";
 import PostContainer from "../PostContainer/PostContainer";
-import { Divider } from "semantic-ui-react";
+import { Divider, Visibility } from "semantic-ui-react";
 import Fuse from "fuse.js";
 
 class PostPage extends Component {
@@ -232,21 +232,30 @@ class PostPage extends Component {
         
     };
     
+    handleUpdate = ( e, { calculations } ) => {
+        if( calculations.bottomVisible ) {
+            this.loadMore();
+            debugger;
+        }
+    };
+    
     render() {
         return (
             <div>
                 <SearchBar handleSearch={ this.handleSearch } logoutFun={ this.props.logoutFun } />
                 {/*if we have state data then map over it and create a PostContainer for each post*/ }
-                { this.state.data && this.state.data.map( ( data ) => {
-                    return <PostContainer
-                        key={ data.username }
-                        post={ data }
-                        setDataStorage={ this.editPostDataStorage }
-                        userName={ this.state.userName }
-                    />;
-                } ) }
-                {/*create the divider at the bottom with a link to load more posts*/ }
-                <Divider horizontal><a onClick={ this.loadMore }>Load More</a></Divider>
+                <Visibility onUpdate={ this.handleUpdate }>
+                    { this.state.data && this.state.data.map( ( data ) => {
+                        return <PostContainer
+                            key={ data.username }
+                            post={ data }
+                            setDataStorage={ this.editPostDataStorage }
+                            userName={ this.state.userName }
+                        />;
+                    } ) }
+                    {/*create the divider at the bottom with a link to load more posts*/ }
+                    <Divider horizontal><a onClick={ this.loadMore }>Load More</a></Divider>
+                </Visibility>
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, Container, Image } from "semantic-ui-react";
+import { Card, Container, Image, Responsive, Segment } from "semantic-ui-react";
 import "./postContainer.scss";
 import CommentSection from "../CommentSection/CommentSection";
 import AddComment from "../CommentSection/AddComment";

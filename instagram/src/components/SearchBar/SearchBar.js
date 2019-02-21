@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Grid, Form, Input, Segment, Divider, Container, Icon } from "semantic-ui-react";
+import { Grid, Form, Input, Segment, Divider, Container, Icon, Button } from "semantic-ui-react";
 import "./searchBar.scss";
 
 const SearchBar = ( props ) => {
@@ -58,7 +58,9 @@ const SearchBar = ( props ) => {
                                     <Icon name="heart outline" size="large" />
                                 </Grid.Column>
                                 <Grid.Column className={ "search-bar__icon-small" }>
-                                    <Icon name="user outline" size="large" />
+                                    <Button onClick={ props.logoutFun }>
+                                        <Icon name="user outline" size="large" />
+                                    </Button>
                                 </Grid.Column>
                             </Grid>
                         </Grid.Column>

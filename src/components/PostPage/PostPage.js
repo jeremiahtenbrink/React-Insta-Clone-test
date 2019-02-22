@@ -23,7 +23,9 @@ class PostPage extends Component {
             // boolean value indicating if data should be stored or not
             storeData: false,
             
-            userName: this.props.userName
+            userName: this.props.userName,
+            
+            loading: false
         };
     }
     
@@ -101,18 +103,23 @@ class PostPage extends Component {
                 // spread prev posts and then add the newly loaded posts
                 data: [ ...state.data, ...more ],
                 // increment page number for next set of data
-                page: ( state.page + 1 )
+                page: ( state.page + 1 ),
+                loading: false
             } ) );
             // return so we don't generate more if we were able to load more
             return;
         }
         
         // we couldn't load from local storage so we are going to generate more posts.
-        let more = generateDummy( 20 );
-        
-        // add the new posts to posts array
-        // set store data to true so we save the data once state has been updated
-        this.setState( ( state ) => ( { data: [ ...state.data, ...more ], storeData: true } ) );
+        generateDummy( 20, posts => {
+            // add the new posts to posts array
+            // set store data to true so we save the data once state has been updated
+            this.setState( ( state ) => ( {
+                data: [ ...state.data, ...posts ],
+                storeData: true,
+                loading: false
+            } ) );
+        } );
         
     };
     
@@ -161,11 +168,13 @@ class PostPage extends Component {
             if( !a.edited ) {
                 a.timestamp = Faker.fake( "{{date.past}}" );
                 a.edited = true;
+                a.id = Faker.fake( "{{random.uuid}}" );
             }
             // ame thing with b
             if( !b.edited ) {
                 b.timestamp = Faker.fake( "{{date.past}}" );
                 b.edited = true;
+                b.id = Faker.fake( "{{random.uuid}}" );
             }
             
             //compare dates
@@ -233,9 +242,13 @@ class PostPage extends Component {
     };
     
     handleUpdate = ( e, { calculations } ) => {
-        if( calculations.bottomVisible ) {
+        if( calculations.percentagePassed > .9 && !this.state.loading && calculations.direction ===
+            "down" ) {
+            if( this.state.loading ) {
+                return;
+            }
+            this.setState( { loading: true } );
             this.loadMore();
-            debugger;
         }
     };
     
@@ -247,10 +260,11 @@ class PostPage extends Component {
                 <Visibility onUpdate={ this.handleUpdate }>
                     { this.state.data && this.state.data.map( ( data ) => {
                         return <PostContainer
-                            key={ data.username }
+                            key={ data.id }
                             post={ data }
                             setDataStorage={ this.editPostDataStorage }
                             userName={ this.state.userName }
+                            avatar={ this.props.avatar }
                         />;
                     } ) }
                     {/*create the divider at the bottom with a link to load more posts*/ }

@@ -55,10 +55,12 @@ class PostContainer extends React.Component {
     
     addComment = event => {
         let avatar = "";
-        if( localStorage.getItem( "avatar" ) ) {
-            avatar = localStorage.getItem( "avatar" );
+        debugger;
+        if( this.props.avatar ) {
+            avatar = this.props.avatar;
         }else {
             avatar = Faker.fake( "{{image.avatar}}" );
+            localStorage.setItem( "avatar", avatar );
         }
         
         const newComment = {
@@ -70,7 +72,7 @@ class PostContainer extends React.Component {
         
         this.setState( ( state ) => {
             
-            state.post.comments.push( newComment );
+            state.post.comments.unshift( newComment );
             
             this.props.setDataStorage( state );
             
@@ -84,12 +86,16 @@ class PostContainer extends React.Component {
     };
     
     like = () => {
-        if( this.state.post.liked ) {
-            return;
-        }
+        
         this.setState( ( state ) => {
-            state.post.likes++;
-            state.post.liked = true;
+            if( state.post.liked ) {
+                state.post.likes--;
+                state.post.liked = false;
+            }else {
+                state.post.likes++;
+                state.post.liked = true;
+            }
+            
             this.props.setDataStorage( state );
             return ( {
                 post: state.post,
@@ -152,6 +158,7 @@ PostContainer.propTypes = {
         } ) ),
         timestamp: PropTypes.string,
         liked: PropTypes.bool,
+        avatar: PropTypes.string
         
     } ),
     

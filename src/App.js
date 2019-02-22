@@ -18,17 +18,34 @@ class App extends Component {
     }
     
     componentDidMount() {
+        let avatar = "";
+        if( localStorage.getItem( "avatar" ) ) {
+            avatar = localStorage.getItem( "avatar" );
+        }else {
+            avatar = Faker.fake( "{{image.avatar}}" );
+        }
+        
         if( localStorage.getItem( "rememberMe" ) ) {
-            this.setState( { login: true, userName: localStorage.getItem( "rememberMe" ) } );
+            this.setState( {
+                login: true,
+                userName: localStorage.getItem( "rememberMe" ),
+                avatar: avatar
+            } );
         }
     }
     
     loginFun = ( username ) => {
         if( localStorage.getItem( "avatar" ) ) {
-            this.setState( { login: true, username, avatar: localStorage.getItem( "avatar" ) } );
+            debugger;
+            this.setState( {
+                login: true,
+                userName: username,
+                avatar: localStorage.getItem( "avatar" )
+            } );
         }else {
             this.changeAvatar();
-            this.setState( { login: true, username: username } );
+            debugger;
+            this.setState( { login: true, userName: username } );
         }
     };
     
@@ -52,6 +69,7 @@ class App extends Component {
                 logoutFun={ this.logoutFun }
                 userName={ this.state.userName }
                 avatar={ this.state.avatar }
+                changeAvatar={ this.changeAvatar }
             />
         );
         

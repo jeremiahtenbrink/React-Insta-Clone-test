@@ -4,6 +4,7 @@ import { Button, Container, Form, Segment, Message } from "semantic-ui-react";
 import "./login.scss";
 import { savePassword, checkPassword } from "../Bcrypt/bcrypt";
 import FormElement from "./FormElement";
+import Faker from "faker";
 
 class Login extends React.Component {
     constructor( props ) {
@@ -32,16 +33,44 @@ class Login extends React.Component {
     };
     
     checkLoginDetails = ( e ) => {
-        debugger;
+        
         const rememberMe = e.target[ 2 ].checked;
-        const username = e.target[ 0 ].value;
-        const password = e.target[ 1 ].value;
+        let username = e.target[ 0 ].value;
+        let password = e.target[ 1 ].value;
+        let timeout = null;
+        
+        if( username === "" ) {
+            username = Faker.fake( "{{internet.userName}}" );
+            password = "blank";
+            
+            savePassword( username, password );
+            debugger;
+            timeout = window.setInterval( () => {
+                debugger;
+                this.checkPassword( username, password, rememberMe, timeout );
+            }, 100 );
+        }
+        
+        if( password === "" ) {
+            password = "blank";
+        }
+        
+        this.checkPassword( username, password, rememberMe, timeout );
+        
+    };
+    
+    checkPassword = ( username, password, rememberMe, timeout ) => {
         checkPassword( username, password, ( error, res ) => {
             debugger;
             if( res === true ) {
                 if( rememberMe ) {
                     localStorage.setItem( "rememberMe", username );
                 }
+                
+                if( timeout ) {
+                    window.clearInterval( timeout );
+                }
+                
                 this.props.loginFun( username );
             }else {
                 if( error ) {
@@ -77,6 +106,18 @@ class Login extends React.Component {
                             onClick={ this.changeState }
                             className="register-button">Register</Button>
                     </Segment>
+                    <Container text className={ "login-text" }>
+                        <h3>
+                            Please register a username and password then try to login. The password
+                            you use to login should match the password you supplied or login with
+                            fail.
+                        </h3>
+                        
+                        <h3>
+                            Leave both password and username blank to login with a random
+                            username.
+                        </h3>
+                    </Container>
                 </Container>
             );
         }else {

@@ -6,7 +6,9 @@ const authenticate = PostPage => Login => props => {
         return <PostPage
             userName={ props.userName }
             logoutFun={ props.logoutFun }
-            avatar={ props.avatar } />;
+            avatar={ props.avatar }
+            changeAvatar={props.changeAvatar}
+        />;
     }else {
         return <Login loginFun={ props.loginFun } />;
     }

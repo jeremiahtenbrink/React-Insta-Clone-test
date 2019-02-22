@@ -8,6 +8,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import PostContainer from "../PostContainer/PostContainer";
 import { Divider, Visibility } from "semantic-ui-react";
 import Fuse from "fuse.js";
+import Avatar from "../Avatar/Avatar";
 
 class PostPage extends Component {
     
@@ -255,6 +256,7 @@ class PostPage extends Component {
     render() {
         return (
             <div>
+                <Avatar username={ this.state.userName } avatar={ this.props.avatar } changeAvatar={this.props.changeAvatar} />
                 <SearchBar handleSearch={ this.handleSearch } logoutFun={ this.props.logoutFun } />
                 {/*if we have state data then map over it and create a PostContainer for each post*/ }
                 <Visibility onUpdate={ this.handleUpdate }>

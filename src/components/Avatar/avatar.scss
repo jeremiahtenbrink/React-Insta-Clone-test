@@ -1,0 +1,22 @@
+.ui.container.avatar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.avatar-information {
+  margin-top: 1rem;
+
+  & h1 {
+    margin-bottom: 0;
+  }
+
+  p:hover {
+    cursor: pointer;
+  }
+}
+
+img.ui.avatar.image.avatar-img {
+  align-self: center;
+  margin-top: 1rem;
+  font-size: 2rem;
+}

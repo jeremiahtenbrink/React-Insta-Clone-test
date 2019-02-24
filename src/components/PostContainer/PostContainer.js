@@ -105,7 +105,7 @@ class PostContainer extends React.Component {
     
     previewImage = () => {
         debugger;
-        this.props.previewImage( this.state.post.imageUrl, this.state.post.username );
+        this.props.previewImage( this.state.post.imageUrlBig, this.state.post.username );
     };
     
     render() {
@@ -157,6 +157,7 @@ PostContainer.propTypes = {
         username: PropTypes.string.isRequired,
         thumbnailUrl: PropTypes.string.isRequired,
         imageUrl: PropTypes.string.isRequired,
+        imageUrlBig: PropTypes.string.isRequired,
         likes: PropTypes.number.isRequired,
         comments: PropTypes.arrayOf( PropTypes.shape( {
             text: PropTypes.string,

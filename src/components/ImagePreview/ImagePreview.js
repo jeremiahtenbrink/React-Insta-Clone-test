@@ -8,7 +8,7 @@ const ImagePreview = ( props ) => {
             open={ props.open }
             centered={ false }
             basic
-            size={ "big" }
+            size={ "large" }
             onClose={ props.onClose }
             onClick={ props.onClose }
             dimmer={ "blurring" }

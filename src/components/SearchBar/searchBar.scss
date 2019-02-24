@@ -1,13 +1,13 @@
 .search-bar {
-  margin-top: 2rem;
+  margin-top: 5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 
   &__left {
     display: flex;
     align-items: center;
     justify-self: flex-start;
-    width: 25%;
+    width: 30%;
     margin-left: 2%;
     cursor: pointer;
   }
@@ -19,11 +19,12 @@
     justify-self: center;
     justify-content: center;
     width: 30%;
+    transform: translateY(100px);
   }
 
   &__icons {
     display: flex;
-    font-size: 1rem;
+    font-size: 1.6rem;
     cursor: pointer;
 
     :not(:first-child) {
@@ -36,7 +37,7 @@
     display: flex;
     align-items: center;
     justify-self: flex-end;
-    width: 25%;
+    width: 30%;
     margin-right: 2%;
   }
 
@@ -88,6 +89,10 @@ button.ui.button.search-button {
 button.ui.button.search-button:hover ~ #search-column {
   background-color: red;
 
+}
+
+.ui.container.avatar {
+  flex-direction: row;
 }
 
 button.ui.button.logout-button {

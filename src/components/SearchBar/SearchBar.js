@@ -96,7 +96,7 @@ class SearchBar extends React.Component {
 
 SearchBar.propTypes = {
     logoutFun: PropTypes.func.isRequired,
-    username: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
     changeAvatar: PropTypes.func.isRequired,
     handleSearch: PropTypes.func.isRequired,

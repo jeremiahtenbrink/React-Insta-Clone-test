@@ -18,6 +18,7 @@ class App extends Component {
     }
     
     componentDidMount() {
+        debugger;
         let avatar = "";
         if( localStorage.getItem( "avatar" ) ) {
             avatar = localStorage.getItem( "avatar" );

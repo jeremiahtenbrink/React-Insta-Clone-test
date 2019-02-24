@@ -10,6 +10,7 @@ import { Divider, Visibility } from "semantic-ui-react";
 import Fuse from "fuse.js";
 import Avatar from "../Avatar/Avatar";
 import ImagePreview from "../ImagePreview/ImagePreview";
+import Users from "../Users/Users";
 
 class PostPage extends Component {
     
@@ -99,6 +100,7 @@ class PostPage extends Component {
     
     // used to load more posts from storage or generate more if we don't have any more in storage
     loadMore = () => {
+        debugger;
         // check if local storage has posts at the page number we are at
         if( localStorage.hasOwnProperty( `posts${ this.state.page }` ) ) {
             // get the data from storage
@@ -150,26 +152,14 @@ class PostPage extends Component {
             let data = JSON.parse( localStorage.getItem( "posts" ) );
             
             if( data.length < 20 ) {
-                generateDummy( 20, ( dummy ) => {
-                    dummy.forEach( ( post ) => {
-                        data.push( post );
-                    } );
-                    this.setState( { data } );
-                } );
+                this.loadMore();
+            }else {
+                this.setState( { data } );
             }
             
-            //sort data by timestamp
-            data = this.sortPosts( data );
-            //set it as state and then return;
-            this.setState( { data } );
-            
-            return;
+        }else {
+            this.loadMore();
         }
-        
-        // sort the data array by timestamp the post was created.
-        let data = this.sortPosts( dummyData );
-        
-        this.setState( { data } );
     }
     
     // used to sort the posts by the post timestamp
@@ -259,6 +249,7 @@ class PostPage extends Component {
     }
     
     handleUpdate = ( e, { calculations } ) => {
+        debugger;
         if( calculations.percentagePassed > .9 && !this.state.loading && calculations.direction ===
             "down" ) {
             if( this.state.loading ) {
@@ -291,6 +282,12 @@ class PostPage extends Component {
         this.setState( { data: posts } );
     };
     
+    filterByUser = user => {
+        let posts = this.getPostsFromStorage();
+        let data = posts.filter( ( post ) => post.username === user.username );
+        this.setState( { data } );
+    };
+    
     goHome = () => {
         let data = JSON.parse( localStorage.getItem( "posts" ) );
         this.setState( { data } );
@@ -310,6 +307,7 @@ class PostPage extends Component {
                 />
                 {/*if we have state data then map over it and create a PostContainer for each post*/ }
                 <Visibility onUpdate={ this.handleUpdate }>
+                    <Users filterByUser={ this.filterByUser } />
                     { this.state.data && this.state.data.map( ( data ) => {
                         return <PostContainer
                             key={ data.id }

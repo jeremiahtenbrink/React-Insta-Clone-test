@@ -117,7 +117,8 @@ class PostContainer extends React.Component {
                             <Image
                                 src={ this.state.post.thumbnailUrl }
                                 avatar
-                                className={ "post__avatar" } />
+                                className={ "post__avatar" }
+                            />
                             <span className="post__avatar-name">{ this.state.post.username }
                                 <span className="metadata">
                             { this.state.post && Moment( this.state.post.timestamp ).fromNow() }
@@ -127,7 +128,9 @@ class PostContainer extends React.Component {
                             <Image
                                 src={ this.state.post.imageUrl }
                                 rounded
-                                onClick={ this.previewImage } />
+                                onClick={ this.previewImage }
+                                fluid
+                            />
                             <LikeCommentButtons
                                 liked={ this.state.post.liked }
                                 onLikeClick={ this.like }

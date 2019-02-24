@@ -2,7 +2,7 @@ import Faker from "faker";
 import unsplash from "./components/Unsplash/unsplash";
 
 export default function generateDummy( number, cb ) {
-    
+    debugger;
     let posts = [];
     unsplash.get( "/photos/random", {
         params: {

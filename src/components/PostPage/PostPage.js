@@ -142,6 +142,7 @@ class PostPage extends Component {
     }
     
     componentDidMount() {
+        debugger;
         //check if we have local storage data. Use local storage data if we have.
         if( localStorage.hasOwnProperty( "posts" ) ) {
             
@@ -149,11 +150,14 @@ class PostPage extends Component {
             let data = JSON.parse( localStorage.getItem( "posts" ) );
             
             if( data.length < 20 ) {
-                let dummy = generateDummy( 20 );
-                dummy.forEach( ( post ) => {
-                    data.push( post );
+                generateDummy( 20, ( dummy ) => {
+                    dummy.forEach( ( post ) => {
+                        data.push( post );
+                    } );
+                    this.setState( { data } );
                 } );
             }
+            
             //sort data by timestamp
             data = this.sortPosts( data );
             //set it as state and then return;
@@ -211,20 +215,8 @@ class PostPage extends Component {
             // return so we don't try to search with a blank word
             return;
         }
-        debugger;
-        // get posts from storage
-        let posts = JSON.parse( localStorage.getItem( "posts" ) );
-        let i = 1;
         
-        while( localStorage.getItem( `posts${ i }` ) ) {
-            // get data from local storage
-            let data = JSON.parse( localStorage.getItem( `posts${ i }` ) );
-            // loop over data and add post to the posts array
-            data.forEach( ( post ) => {
-                posts.push( post );
-            } );
-            i++;
-        }
+        let posts = this.getPostsFromStorage();
         
         // set the search options up.
         const options = {
@@ -249,6 +241,23 @@ class PostPage extends Component {
         
     };
     
+    getPostsFromStorage() {
+        // get posts from storage
+        let posts = JSON.parse( localStorage.getItem( "posts" ) );
+        let i = 1;
+        
+        while( localStorage.getItem( `posts${ i }` ) ) {
+            // get data from local storage
+            let data = JSON.parse( localStorage.getItem( `posts${ i }` ) );
+            // loop over data and add post to the posts array
+            data.forEach( ( post ) => {
+                posts.push( post );
+            } );
+            i++;
+        }
+        return posts;
+    }
+    
     handleUpdate = ( e, { calculations } ) => {
         if( calculations.percentagePassed > .9 && !this.state.loading && calculations.direction ===
             "down" ) {
@@ -269,16 +278,35 @@ class PostPage extends Component {
         this.setState( { modalOpen: false, modalHeader: "", modalUrl: "" } );
     };
     
+    filterByLiked = () => {
+        let posts = this.getPostsFromStorage();
+        
+        posts = posts.filter( ( post ) => {
+            if( post.liked ) {
+                return true;
+            }
+            return false;
+        } );
+        
+        this.setState( { data: posts } );
+    };
+    
+    goHome = () => {
+        let data = JSON.parse( localStorage.getItem( "posts" ) );
+        this.setState( { data } );
+    };
+    
     render() {
         return (
             <div>
                 <SearchBar
-                    handleSearch={ this.handleSearch }
                     logoutFun={ this.props.logoutFun }
-                    username={ this.state.userName }
+                    userName={ this.state.userName }
                     avatar={ this.props.avatar }
                     changeAvatar={ this.props.changeAvatar }
                     handleSearch={ this.handleSearch }
+                    filterByLiked={ this.filterByLiked }
+                    goHome={ this.goHome }
                 />
                 {/*if we have state data then map over it and create a PostContainer for each post*/ }
                 <Visibility onUpdate={ this.handleUpdate }>

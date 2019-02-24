@@ -26,7 +26,7 @@ class SearchBar extends React.Component {
         return (
             
             <div className="search-bar">
-                <div className="search-bar__left">
+                <div className="search-bar__left" onClick={ this.props.goHome }>
                     <div className="search-bar__icon">
                         <Icon name="instagram" size="huge" />
                     </div>
@@ -55,24 +55,29 @@ class SearchBar extends React.Component {
                         </Form>
                     </div>
                     <div
-                        className="search-bar__icons"
-                        onMouseEnter={ this.onMouseEnter }
-                        onMouseLeave={ this.onMouseLeave }>
+                        className="search-bar__icons">
                         
                         <div
                             className="search-bar__icons-search"
+                            onMouseEnter={ this.onMouseEnter }
+                            onMouseLeave={ this.onMouseLeave }
                         >
                             <Icon name="search" size="large" />
                         </div>
                         
-                        <div className="search-bar__icons-compas">
-                            <Icon name="compass outline" size="large" />
+                        <div className="search-bar__icons-compas" onClick={ this.props.goHome }>
+                            <Icon name="home" size="large" />
                         </div>
                         
-                        <div className="search-bar__icon-heart">
+                        <div
+                            className="search-bar__icon-heart"
+                            onClick={ this.props.filterByLiked }>
                             <Icon name="heart outline" size="large" />
                         </div>
-                        <div className="search-bar__icon-user">
+                        <div
+                            className="search-bar__icon-user"
+                            onClick={ this.props.logoutFun }
+                        >
                             <Icon name="user outline" size="large" />
                         </div>
                     </div>
@@ -90,7 +95,12 @@ class SearchBar extends React.Component {
 };
 
 SearchBar.propTypes = {
+    logoutFun: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    changeAvatar: PropTypes.func.isRequired,
     handleSearch: PropTypes.func.isRequired,
+    goHome: PropTypes.func.isRequired
 };
 SearchBar.defaultProps = {};
 

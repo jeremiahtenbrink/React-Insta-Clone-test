@@ -9,6 +9,7 @@
     justify-self: flex-start;
     width: 25%;
     margin-left: 2%;
+    cursor: pointer;
   }
 
   &__middle {
@@ -23,6 +24,11 @@
   &__icons {
     display: flex;
     font-size: 1rem;
+    cursor: pointer;
+
+    :not(:first-child) {
+      margin-left: 1rem;
+    }
 
   }
 
@@ -40,18 +46,21 @@
     width: 1px;
     max-width: 1px;
     flex-grow: 1;
+    transform: translateX(-30px);
     transition: all 2s;
 
     &:focus-within {
       display: flex;
       max-width: 100%;
       opacity: 1;
+      transform: translateX(-10px);
     }
 
     &.active {
       display: flex;
       max-width: 100%;
       opacity: 1;
+      transform: translateX(-10px);
     }
   }
 }

@@ -86,7 +86,8 @@ class SearchBar extends React.Component {
                     <Avatar
                         username={ this.props.userName }
                         avatar={ this.props.avatar }
-                        changeAvatar={ this.props.changeAvatar } />
+                        changeAvatar={ this.props.changeAvatar }
+                    />
                 </div>
             </div>
         

@@ -1,8 +1,20 @@
 .users {
-  margin: 8rem 0;
+  margin: 10rem 0 16rem 0;
+  flex-direction: row;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  transform-origin: center;
+  transform: rotateX(60deg);
+  transform-style: preserve-3d;
+}
 
+.ui.container.users-container {
+  perspective: 500px;
+}
+
+.user {
+  width: 10%;
 }
 
 img.ui.avatar.image.users-section {
@@ -14,31 +26,67 @@ img.ui.avatar.image.users-section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  height: 100%;
+
+  transform-origin: bottom;
+  transform-style: preserve-3d;
+  transform: rotateX(-60deg);
 
   &-1,
   &-10 {
-    transform: translateY(-20px);
+    transform: translateY(0);
 
   }
 
   &-2,
   &-9 {
-    transform: translateY(20px);
+    transform: translateY(60px);
   }
 
   &-3,
   &-8 {
-    transform: translateY(40px);
+    transform: translateY(100px);
   }
 
   &-4,
   &-7 {
-    transform: translateY(60px);
+    transform: translateY(120px);
   }
 
   &-5,
   &-6 {
-    transform: translateY(80px);
+    transform: translateY(160px);
+  }
+
+  &-20,
+  &-11 {
+    transform: translateY(0);
+
+  }
+
+  &-19,
+  &-12 {
+    transform: translateY(-20px);
+  }
+
+  &-18,
+  &-13 {
+    transform: translateY(-40px);
+  }
+
+  &-17,
+  &-14 {
+    transform: translateY(-60px);
+  }
+
+  &-16,
+  &-15 {
+    transform: translateY(-100px);
   }
 }
 
+span.users-section__username {
+  transform-style: preserve-3d;
+  transform: rotateX(-60deg);
+}

@@ -249,7 +249,6 @@ class PostPage extends Component {
     }
     
     handleUpdate = ( e, { calculations } ) => {
-        debugger;
         if( calculations.percentagePassed > .9 && !this.state.loading && calculations.direction ===
             "down" ) {
             if( this.state.loading ) {

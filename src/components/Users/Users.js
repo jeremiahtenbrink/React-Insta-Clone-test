@@ -24,37 +24,29 @@ class Users extends Component {
     }
     
     render() {
-        debugger;
-        let arrayU = [];
-        if( this.state.users.length > 0 ) {
-            for( let i = 0; i < 10; i++ ) {
-                let number = this.state.startingNumber + i;
-                if( number >= 20 ) {
-                    number = number - 20;
-                }
-                arrayU.push( this.state.users[ number ] );
-                
-            }
-        }
         
+        debugger;
         return (
-            <Container>
+            <Container className={ "users-container" }>
                 <div className="users">
-                    { arrayU.map( ( user, index ) => {
+                    { this.state.users.map( ( user, index ) => {
                         return (
-                            <div className="user">
-                                <div className={ `avatar avatar-${ index + 1 }` }>
+                            <div className="user" key={ user.username }>
+                                <div
+                                    className={ `avatar avatar-` + ( index < 10 ? ( 20 - index ) :
+                                        ( index - 9 ) ) }>
                                     <Image
                                         src={ user.thumbnailUrl }
                                         avatar
-                                        className={ "users-section" }
+                                        className={ `users-section` }
                                         onClick={ () => {
                                             debugger;
                                             this.props.filterByUser( user );
                                         } }
                                     />
-                                    <span>{ user.username }</span>
+                                    <span className="users-section__username">{ user.username }</span>
                                 </div>
+                            
                             </div>
                         );
                     } ) }

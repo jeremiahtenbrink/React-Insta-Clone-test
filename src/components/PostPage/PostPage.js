@@ -9,11 +9,11 @@ import PostContainer from "../PostContainer/PostContainer";
 import { Divider, Visibility } from "semantic-ui-react";
 import Fuse from "fuse.js";
 import Avatar from "../Avatar/Avatar";
+import ImagePreview from "../ImagePreview/ImagePreview";
 
 class PostPage extends Component {
     
     constructor( props ) {
-        debugger;
         super( props );
         // posts is a array of post objects. Stored in state.data
         this.state = {
@@ -26,7 +26,13 @@ class PostPage extends Component {
             
             userName: this.props.userName,
             
-            loading: false
+            loading: false,
+            
+            modalOpen: false,
+            
+            modalUrl: "",
+            
+            modalHeader: ""
         };
     }
     
@@ -192,6 +198,7 @@ class PostPage extends Component {
     // handle the user typing in the search bar
     handleSearch = ( e ) => {
         
+        debugger;
         // get the word the user is typing
         let word = e.target.value;
         
@@ -253,11 +260,26 @@ class PostPage extends Component {
         }
     };
     
+    previewImage = ( imgUrl, header ) => {
+        debugger;
+        this.setState( { modalOpen: true, modalHeader: header, modalUrl: imgUrl } );
+    };
+    
+    previewClose = () => {
+        this.setState( { modalOpen: false, modalHeader: "", modalUrl: "" } );
+    };
+    
     render() {
         return (
             <div>
-                <Avatar username={ this.state.userName } avatar={ this.props.avatar } changeAvatar={this.props.changeAvatar} />
-                <SearchBar handleSearch={ this.handleSearch } logoutFun={ this.props.logoutFun } />
+                <SearchBar
+                    handleSearch={ this.handleSearch }
+                    logoutFun={ this.props.logoutFun }
+                    username={ this.state.userName }
+                    avatar={ this.props.avatar }
+                    changeAvatar={ this.props.changeAvatar }
+                    handleSearch={ this.handleSearch }
+                />
                 {/*if we have state data then map over it and create a PostContainer for each post*/ }
                 <Visibility onUpdate={ this.handleUpdate }>
                     { this.state.data && this.state.data.map( ( data ) => {
@@ -267,11 +289,19 @@ class PostPage extends Component {
                             setDataStorage={ this.editPostDataStorage }
                             userName={ this.state.userName }
                             avatar={ this.props.avatar }
+                            previewImage={ this.previewImage }
                         />;
                     } ) }
                     {/*create the divider at the bottom with a link to load more posts*/ }
                     <Divider horizontal><a onClick={ this.loadMore }>Load More</a></Divider>
                 </Visibility>
+                <ImagePreview
+                    open={ this.state.modalOpen }
+                    imageUrl={ this.state.modalUrl }
+                    header={ this.state.modalHeader }
+                    onClose={ this.previewClose }
+                />
+            
             </div>
         );
     }

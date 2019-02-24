@@ -103,6 +103,11 @@ class PostContainer extends React.Component {
         } );
     };
     
+    previewImage = () => {
+        debugger;
+        this.props.previewImage( this.state.post.imageUrl, this.state.post.username );
+    };
+    
     render() {
         return (
             <Container className={ "post-container" }>
@@ -119,7 +124,10 @@ class PostContainer extends React.Component {
                         </span>
                         </span>
                             
-                            <Image src={ this.state.post.imageUrl } rounded />
+                            <Image
+                                src={ this.state.post.imageUrl }
+                                rounded
+                                onClick={ this.previewImage } />
                             <LikeCommentButtons
                                 liked={ this.state.post.liked }
                                 onLikeClick={ this.like }
@@ -143,10 +151,10 @@ class PostContainer extends React.Component {
 
 PostContainer.propTypes = {
     post: PropTypes.shape( {
-        username: PropTypes.string,
-        thumbnailUrl: PropTypes.string,
-        imageUrl: PropTypes.string,
-        likes: PropTypes.number,
+        username: PropTypes.string.isRequired,
+        thumbnailUrl: PropTypes.string.isRequired,
+        imageUrl: PropTypes.string.isRequired,
+        likes: PropTypes.number.isRequired,
         comments: PropTypes.arrayOf( PropTypes.shape( {
             text: PropTypes.string,
             username: PropTypes.string,
@@ -157,11 +165,11 @@ PostContainer.propTypes = {
             avatar: PropTypes.string
         } ) ),
         timestamp: PropTypes.string,
-        liked: PropTypes.bool,
+        liked: PropTypes.bool.isRequired,
         avatar: PropTypes.string
         
     } ),
-    
+    previewImage: PropTypes.func.isRequired,
     setDataStorage: PropTypes.func.isRequired
     
 };

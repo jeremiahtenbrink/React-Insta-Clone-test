@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import "./avatar.scss";
 
 const Avatar = ( props ) => {
-    debugger;
     return (
         <Container className={ "avatar" }>
             <Image src={ props.avatar } avatar className={ "avatar-img" } />

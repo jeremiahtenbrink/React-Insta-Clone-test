@@ -16,6 +16,15 @@ class Users extends Component {
         };
     }
     
+    componentDidUpdate( prevProps, prevState, snapshot ) {
+        if( !this.state.users ) {
+            if( localStorage.hasOwnProperty( "users" ) ) {
+                let users = JSON.parse( localStorage.getItem( "users" ) );
+                this.setState( { users } );
+            }
+        }
+    }
+    
     componentDidMount() {
         if( this.state.users.length === 0 ) {
             let users = JSON.parse( localStorage.getItem( "users" ) );
@@ -29,7 +38,7 @@ class Users extends Component {
         return (
             <Container className={ "users-container" }>
                 <div className="users">
-                    { this.state.users.map( ( user, index ) => {
+                    { this.state.users && this.state.users.map( ( user, index ) => {
                         return (
                             <div className="user" key={ user.username }>
                                 <div

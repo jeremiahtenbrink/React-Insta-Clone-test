@@ -296,6 +296,8 @@ class PostPage extends Component {
     render() {
         return (
             <div>
+                <div className="background" />
+                
                 <SearchBar
                     logoutFun={ this.props.logoutFun }
                     userName={ this.state.userName }

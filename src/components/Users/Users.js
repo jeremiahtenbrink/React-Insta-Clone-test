@@ -36,7 +36,7 @@ const Avatar = styled.div`
     transform-origin: center;
     transform-style: preserve-3d;
     transform: rotateX(-77deg);
-    
+    cursor: pointer;
     
     `;
 

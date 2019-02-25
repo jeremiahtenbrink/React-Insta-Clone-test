@@ -1,24 +1,26 @@
 import React from "react";
-import { Modal, Image } from "semantic-ui-react";
+import { Modal, Image, Container } from "semantic-ui-react";
 import PropTypes from "prop-types";
+import "./imagePreview.scss";
 
 const ImagePreview = ( props ) => {
     return (
-        <Modal
-            open={ props.open }
-            centered={ false }
-            basic
-            size={ "large" }
-            onClose={ props.onClose }
-            onClick={ props.onClose }
-            dimmer={ "blurring" }
-        >
-            <Modal.Header>{ props.header }</Modal.Header>
-            <Modal.Content image>
-                <Image wrapped fluid src={ props.imageUrl } />
-            
-            </Modal.Content>
-        </Modal>
+        <Container>
+            <Modal
+                open={ props.open }
+                basic
+                onClose={ props.onClose }
+                onClick={ props.onClose }
+                dimmer={ "blurring" }
+            >
+                <Modal.Header>{ props.header }</Modal.Header>
+                <Modal.Content>
+                    <Image src={ props.imageUrl } centered />
+                
+                </Modal.Content>
+            </Modal>
+        </Container>
+    
     );
 };
 

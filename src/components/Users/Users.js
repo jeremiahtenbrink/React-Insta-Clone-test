@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Image, Container } from "semantic-ui-react";
 import styled from "styled-components";
 import "./users.scss";
-import PropTypes from "prop-types";
 
 const UsersComponent = styled.div`
     position: relative;
@@ -14,6 +13,14 @@ const UsersComponent = styled.div`
     transform-origin: bottom;
     transform-style: preserve-3d;
     transform: rotateX(77deg);
+    @media (max-width: 1000px) {
+        margin-bottom: 20rem;
+    }
+    @media (max-width: 1200px) {
+        margin-bottom: 24rem;
+    }
+    
+    
 `;
 
 const User = styled.div`
@@ -25,6 +32,10 @@ const User = styled.div`
     transform-style: preserve-3d;
     transform: translate( calc(${ props => props.x } * 25vw), calc(${ props => props.y } * 25vw));
     transition: all 1s;
+    
+    @media (max-width: 1200px) {
+        transform: translate( calc(${ props => props.x } * 30vw), calc(${ props => props.y } * 30vw));
+    }
 `;
 
 const Avatar = styled.div`

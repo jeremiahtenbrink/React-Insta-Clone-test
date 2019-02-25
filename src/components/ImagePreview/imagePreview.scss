@@ -1,0 +1,4 @@
+.blurring.dimmed.dimmable > :not(.dimmer) {
+  overflow: hidden;
+  object-fit: cover;
+}

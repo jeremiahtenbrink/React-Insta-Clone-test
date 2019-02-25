@@ -1,10 +1,9 @@
-import React, { createRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { Button, Input, Form, Checkbox, Message, Modal, Ref } from "semantic-ui-react";
+import { Button, Input, Form, Checkbox, Message, Modal } from "semantic-ui-react";
 import "./login.scss";
 import { savePassword, checkPassword } from "../Bcrypt/bcrypt";
 import Faker from "faker";
-import LoginForm from "./LoginForm";
 
 class Login extends React.Component {
     constructor( props ) {

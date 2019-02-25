@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import generateDummy from "../../generateDummyData";
-import dummyData from "../../dummy-data";
 import Faker from "faker";
 import Moment from "moment";
 import SearchBar from "../SearchBar/SearchBar";
 import PostContainer from "../PostContainer/PostContainer";
 import { Divider, Visibility } from "semantic-ui-react";
 import Fuse from "fuse.js";
-import Avatar from "../Avatar/Avatar";
 import ImagePreview from "../ImagePreview/ImagePreview";
 import Users from "../Users/Users";
 
@@ -192,7 +189,6 @@ class PostPage extends Component {
     // handle the user typing in the search bar
     handleSearch = ( e ) => {
         
-        
         // get the word the user is typing
         let word = e.target.value;
         
@@ -320,7 +316,7 @@ class PostPage extends Component {
                         />;
                     } ) }
                     {/*create the divider at the bottom with a link to load more posts*/ }
-                    <Divider horizontal><a onClick={ this.loadMore }>Load More</a></Divider>
+                    <Divider horizontal onClick={ this.loadMore }>Load More</Divider>
                 </Visibility>
                 <ImagePreview
                     open={ this.state.modalOpen }

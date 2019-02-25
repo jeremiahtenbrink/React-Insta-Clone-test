@@ -7,6 +7,12 @@
 img.ui.avatar.image.users-section {
   height: 6rem;
   width: 6rem;
+  background-size: cover;
+
+  @media (max-width: 1200px) {
+    height: 4rem;
+    width: 4rem;
+  }
 
 }
 

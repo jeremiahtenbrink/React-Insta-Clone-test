@@ -1,7 +1,13 @@
 .search-bar {
+  width: 100vw;
   margin-top: 5rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+
+  @media (max-width: 1200px) {
+
+  }
 
   &__left {
     display: flex;
@@ -10,16 +16,30 @@
     width: 30%;
     margin-left: 2%;
     cursor: pointer;
+    font-size: 2rem;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    @media (max-width: 1200px) {
+      font-size: 1rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
   }
 
   &__middle {
+    order: 3;
     display: -webkit-flex;
     display: flex;
     align-self: center;
     justify-self: center;
     justify-content: center;
-    width: 40%;
-    transform: translateY(100px);
+    width: 50%;
+    transform: translateY(50px);
   }
 
   &__icons {
@@ -39,6 +59,16 @@
     justify-self: flex-end;
     width: 30%;
     margin-right: 2%;
+    font-size: 2rem;
+
+    @media (max-width: 1200px) {
+      font-size: 2rem;
+      width: 50%;
+
+      p {
+        font-size: 1.4rem;
+      }
+    }
 
   }
 
@@ -65,6 +95,10 @@
       transform: translateX(-10px);
     }
   }
+}
+
+img.ui.avatar.image.avatar-img {
+  font-size: 3rem;
 }
 
 .icon, h1 {

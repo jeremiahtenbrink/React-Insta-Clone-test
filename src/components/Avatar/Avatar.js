@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Image } from "semantic-ui-react";
-import PropTypes from "prop-types";
 import "./avatar.scss";
 
 const Avatar = ( props ) => {

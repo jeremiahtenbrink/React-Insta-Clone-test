@@ -1,16 +1,64 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
+form, fieldset, input, p, blockquote, table, th, td, embed, object {
+  padding: 0;
+  margin: 0;
+  min-height: unset;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset, img, abbr {
+  border: 0;
+}
+
+address, caption, cite, code, dfn, em,
+h1, h2, h3, h4, h5, h6, strong, th, var {
+  font-weight: normal;
+  font-style: normal;
+  font-size: unset;
+}
+
+ul {
+  list-style: none;
+}
+
+caption, th {
+  text-align: left;
+}
+
+
+q:before, q:after {
+  content: '';
+}
+
+a, ins {
+  text-decoration: none;
+}
+
+
 body {
   position: relative;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  overflow: -webkit-paged-y;
+}
+
+p {
+  font-size: 1.4rem;
 }
 
 .background {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   background-image: linear-gradient(to bottom right, rgba(white, .8), rgba(white, .92)), url("./images/bosco-shots-1309162-unsplash.jpg");
-  background-position: bottom right;
   background-size: cover;
+  background-position: bottom;
   background-repeat: no-repeat;
   z-index: -10;
 }

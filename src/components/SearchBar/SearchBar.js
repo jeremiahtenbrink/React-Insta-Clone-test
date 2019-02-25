@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Grid, Form, Input, Segment, Divider, Container, Icon, Button } from "semantic-ui-react";
+import { Form, Input, Icon } from "semantic-ui-react";
 import "./searchBar.scss";
 import Avatar from "../Avatar/Avatar";
 

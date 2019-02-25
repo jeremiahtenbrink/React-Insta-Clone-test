@@ -33,7 +33,7 @@ class Login extends React.Component {
     };
     
     handleChange = ( e ) => {
-        debugger;
+        
         this.setState( { [ e.target.name ]: e.target.value } );
     };
     
@@ -65,7 +65,7 @@ class Login extends React.Component {
     };
     
     registerUser = () => {
-        debugger;
+        
         let username = this.state.username;
         let password = this.state.password;
         
@@ -113,7 +113,7 @@ class Login extends React.Component {
     
     checkPassword = ( username, password, rememberMe, timeout ) => {
         checkPassword( username, password, ( error, res ) => {
-            debugger;
+            
             if( res === true ) {
                 if( rememberMe ) {
                     localStorage.setItem( "rememberMe", username );
@@ -126,7 +126,7 @@ class Login extends React.Component {
                 this.props.loginFun( username );
             }else {
                 if( error ) {
-                    debugger;
+                    
                     this.setState( {
                         state: "error",
                         message: "Could not find username",

@@ -100,7 +100,7 @@ class PostPage extends Component {
     
     // used to load more posts from storage or generate more if we don't have any more in storage
     loadMore = () => {
-        debugger;
+        
         // check if local storage has posts at the page number we are at
         if( localStorage.hasOwnProperty( `posts${ this.state.page }` ) ) {
             // get the data from storage
@@ -144,7 +144,7 @@ class PostPage extends Component {
     }
     
     componentDidMount() {
-        debugger;
+        
         //check if we have local storage data. Use local storage data if we have.
         if( localStorage.hasOwnProperty( "posts" ) ) {
             
@@ -192,7 +192,7 @@ class PostPage extends Component {
     // handle the user typing in the search bar
     handleSearch = ( e ) => {
         
-        debugger;
+        
         // get the word the user is typing
         let word = e.target.value;
         
@@ -260,7 +260,7 @@ class PostPage extends Component {
     };
     
     previewImage = ( imgUrl, header ) => {
-        debugger;
+        
         this.setState( { modalOpen: true, modalHeader: header, modalUrl: imgUrl } );
     };
     

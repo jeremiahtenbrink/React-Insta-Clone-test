@@ -16,7 +16,7 @@ class LikeCommentButtons extends React.Component {
     handleClose = () => this.setState( { modalOpen: false } );
     
     handleSubmit = ( e ) => {
-        debugger;
+        
         e.target[ 0 ] = this.formRef.current.childNodes[ 0 ];
         this.props.handleSubmit( e );
         this.handleClose();

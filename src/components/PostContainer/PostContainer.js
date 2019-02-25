@@ -55,7 +55,7 @@ class PostContainer extends React.Component {
     
     addComment = event => {
         let avatar = "";
-        debugger;
+        
         if( this.props.avatar ) {
             avatar = this.props.avatar;
         }else {
@@ -104,7 +104,7 @@ class PostContainer extends React.Component {
     };
     
     previewImage = () => {
-        debugger;
+        
         this.props.previewImage( this.state.post.imageUrlBig, this.state.post.username );
     };
     

@@ -18,7 +18,6 @@ class App extends Component {
     }
     
     componentDidMount() {
-        debugger;
         let avatar = "";
         if( localStorage.getItem( "avatar" ) ) {
             avatar = localStorage.getItem( "avatar" );
@@ -37,7 +36,6 @@ class App extends Component {
     
     loginFun = ( username ) => {
         if( localStorage.getItem( "avatar" ) ) {
-            debugger;
             this.setState( {
                 login: true,
                 userName: username,

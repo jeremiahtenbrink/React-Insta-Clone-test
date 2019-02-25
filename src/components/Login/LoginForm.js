@@ -26,7 +26,7 @@ class LoginForm extends Component {
     };
     
     handleChange = ( e ) => {
-        debugger;
+        
         this.setState( { [ e.target.name ]: e.target.value } );
     };
     

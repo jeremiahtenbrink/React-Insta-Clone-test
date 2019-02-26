@@ -55,6 +55,10 @@ const User = styled.div`
         transform: translate( calc(${ props => props.x } * 50vw), calc(${ props => props.y } * 50vw));
     }
     
+    @media (max-width: 500px) {
+      transform: translate( calc(${ props => props.x } * 250px), calc(${ props => props.y } * 250px));
+    }
+    
 `;
 
 const Avatar = styled.div`
@@ -70,6 +74,11 @@ const Avatar = styled.div`
     @media (min-width: 1200px) {
         transform: rotateX(-65deg)
     }
+    @media (max-width: 768px) {
+        width: 4rem;
+        height: 4rem;
+    }
+    
     cursor: pointer;
     
     `;

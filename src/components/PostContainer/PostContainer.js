@@ -113,7 +113,7 @@ class PostContainer extends React.Component {
             <Container className={ "post-container" }>
                 <Card className={ "post" }>
                     <Card.Content>
-                        <div className="card-fistHalf">
+                        <div className="card-first-half">
                             <div className="post-container__avatar">
                                 <Image
                                     src={ this.state.post.thumbnailUrl }

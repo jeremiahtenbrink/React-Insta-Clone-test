@@ -4,6 +4,8 @@ img.ui.avatar.image.users-section {
   height: 6rem;
   width: 6rem;
   background-size: cover;
+  box-sizing: content-box;
+  padding: .5rem;
 
   @media (max-width: 1200px) {
     height: 4rem;
@@ -31,6 +33,6 @@ img.ui.avatar.image.users-section {
 }
 
 span.users-section__username {
-  color: #5ec1f4;
+  color: rgba(12, 64, 90, 0.84);
   margin-top: .7rem;
 }

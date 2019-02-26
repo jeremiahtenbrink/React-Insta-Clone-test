@@ -6,6 +6,10 @@
 .avatar-information {
   margin-top: 1rem;
 
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
   & h1 {
     margin-bottom: 0;
   }

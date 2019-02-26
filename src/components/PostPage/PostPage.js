@@ -8,6 +8,9 @@ import { Divider, Visibility } from "semantic-ui-react";
 import Fuse from "fuse.js";
 import ImagePreview from "../ImagePreview/ImagePreview";
 import Users from "../Users/Users";
+import "./postPage.scss";
+
+import { Container } from "semantic-ui-react";
 
 class PostPage extends Component {
     
@@ -290,8 +293,7 @@ class PostPage extends Component {
     
     render() {
         return (
-            <div>
-                <div className="background" />
+            <>
                 
                 <SearchBar
                     logoutFun={ this.props.logoutFun }
@@ -302,9 +304,10 @@ class PostPage extends Component {
                     filterByLiked={ this.filterByLiked }
                     goHome={ this.goHome }
                 />
+                <Users filterByUser={ this.filterByUser } />
                 {/*if we have state data then map over it and create a PostContainer for each post*/ }
-                <Visibility onUpdate={ this.handleUpdate }>
-                    <Users filterByUser={ this.filterByUser } />
+                <Visibility onUpdate={ this.handleUpdate } className={ "data-container" }>
+                    
                     { this.state.data && this.state.data.map( ( data ) => {
                         return <PostContainer
                             key={ data.id }
@@ -325,7 +328,7 @@ class PostPage extends Component {
                     onClose={ this.previewClose }
                 />
             
-            </div>
+            </>
         );
     }
 }

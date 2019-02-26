@@ -39,11 +39,15 @@ a, ins {
 }
 
 
-body {
-  position: relative;
+body, html {
   box-sizing: border-box;
+  max-width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
   font-size: 62.5%;
-  overflow: -webkit-paged-y;
 }
 
 p {

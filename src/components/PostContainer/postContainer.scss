@@ -1,41 +1,52 @@
 .ui.card {
 
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   width: max-content;
 
   &.post {
     margin-top: 2rem;
+    display: -webkit-flex;
     display: flex;
-    background-color: rgba(azure, .6);
+    flex-grow: 1;
+    background-color: rgba(240, 255, 255, 0.6);
+
   }
 
   & > .imgage {
+
     object-fit: cover;
   }
 
 }
 
 .content {
+  margin-top: 0;
   display: flex;
 
   @media screen and (max-width: 1000px) {
     flex-direction: column;
   }
 
-  & .card-first-half {
+
+  & .card-second-half {
     width: 50%;
-    max-height: max-content;
+    max-height: 610px;
+    display: flex;
+    flex-direction: column;
     @media screen and (max-width: 1000px) {
       width: 100%;
     }
   }
+}
 
-  & .card-second-half {
-    width: 50%;
-    overflow-y: scroll;
-    max-height: 610px;
-    @media screen and (max-width: 1000px) {
-      width: 100%;
-    }
+.card-first-half {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-height: max-content;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
   }
 }
 
@@ -46,17 +57,40 @@
 
 .post-container {
   margin-bottom: 4rem;
+
+  &__avatar {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__image-container {
+    display: flex;
+    width: 90%;
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+    }
+
+  }
+
+  &__likes {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.post {
+
+img.ui.avatar.image.post {
 
   &__avatar {
     margin-bottom: 1rem;
     margin-right: 1rem;
+    font-size: 2.5rem;
 
     &-name {
       margin-left: 1rem;
-      font-size: 1.6rem;
+      align-self: center;
+      color: rgba(0, 169, 255, 0.6);
+      font-size: 2rem;
     }
   }
 }
@@ -74,3 +108,22 @@ span.metadata {
 .card-meta {
   margin-left: 1rem;
 }
+
+.header.post__likes {
+  display: flex;
+}
+
+img.ui.fluid.rounded.image {
+  max-height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  outline: brown;
+  border: 4px solid #66cbff;
+  padding: 3rem;
+  border-radius: 20px;
+  margin: 2rem;
+}
+

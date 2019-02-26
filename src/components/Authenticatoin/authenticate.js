@@ -1,14 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Container } from "semantic-ui-react";
+import "./authenticate.scss";
 
 const authenticate = PostPage => Login => props => {
     if( props.login ) {
-        return <PostPage
-            userName={ props.userName }
-            logoutFun={ props.logoutFun }
-            avatar={ props.avatar }
-            changeAvatar={props.changeAvatar}
-        />;
+        return (
+            <PostPage
+                userName={ props.userName }
+                logoutFun={ props.logoutFun }
+                avatar={ props.avatar }
+                changeAvatar={ props.changeAvatar }
+            />
+        );
     }else {
         return <Login loginFun={ props.loginFun } />;
     }

@@ -1,9 +1,5 @@
 @import './trig';
 
-.ui.container.users-container {
-  perspective: 900px;
-}
-
 img.ui.avatar.image.users-section {
   height: 6rem;
   width: 6rem;
@@ -14,6 +10,24 @@ img.ui.avatar.image.users-section {
     width: 4rem;
   }
 
+}
+
+.ui.container.users-container {
+  perspective: 1000px;
+  width: 100%;
+  height: 500px;
+
+  @media (max-width: 768px) {
+    perspective-origin: top;
+    perspective: 400px;
+  }
+
+  @media (max-width: 1400px) {
+    height: 27rem;
+  }
+  @media (max-width: 1200px) {
+    height: 16rem;
+  }
 }
 
 span.users-section__username {

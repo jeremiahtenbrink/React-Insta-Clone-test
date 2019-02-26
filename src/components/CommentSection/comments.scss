@@ -1,7 +1,8 @@
 .comment-section {
-
+  display: flex;
   margin-left: 1rem;
-  max-width: 90%;
+  max-width: 100%;
+  overflow-y: scroll;
 }
 
 .add-comment-section {
@@ -19,3 +20,6 @@
   }
 }
 
+form.ui.form.add-comment-section {
+  display: flex;
+}

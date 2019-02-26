@@ -5,20 +5,29 @@ import "./users.scss";
 
 const UsersComponent = styled.div`
     position: relative;
-    margin: 15rem 0 35rem 0;
+    margin: 14rem 0 17rem 0;
     flex-direction: row;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     transform-origin: bottom;
     transform-style: preserve-3d;
-    transform: rotateX(77deg);
+    transform: rotateX(74deg);
+    
+    @media (max-width: 768px) {
+      transform: rotateX(74deg) translateX(0) translateY(300px) translateZ(0);
+    }
+    @media (max-width: 1400px) {
+        margin: 14rem 0 13rem 0;
+    }
+    @media (max-width: 1200px) {
+        margin-bottom: 13rem;
+    }
     @media (max-width: 1000px) {
         margin-bottom: 20rem;
     }
-    @media (max-width: 1200px) {
-        margin-bottom: 24rem;
-    }
+    
+    
     
     
 `;
@@ -30,12 +39,20 @@ const User = styled.div`
     width: 10%;
     transform-origin: center;
     transform-style: preserve-3d;
-    transform: translate( calc(${ props => props.x } * 25vw), calc(${ props => props.y } * 25vw));
+    transform: translate( calc(${ props => props.x } * 28vw), calc(${ props => props.y } * 28vw));
     transition: all 1s;
-    
-    @media (max-width: 1200px) {
+   
+    @media (max-width: 1400px) {
         transform: translate( calc(${ props => props.x } * 30vw), calc(${ props => props.y } * 30vw));
     }
+    
+    @media (max-width: 1000px) {
+        transform: translate( calc(${ props => props.x } * 35vw), calc(${ props => props.y } * 35vw));
+    }
+    @media (max-width: 768px) {
+        transform: translate( calc(${ props => props.x } * 50vw), calc(${ props => props.y } * 50vw));
+    }
+    
 `;
 
 const Avatar = styled.div`
@@ -46,7 +63,7 @@ const Avatar = styled.div`
     height: 100%;
     transform-origin: center;
     transform-style: preserve-3d;
-    transform: rotateX(-77deg);
+    transform: rotateX(-74deg);
     cursor: pointer;
     
     `;
@@ -94,7 +111,7 @@ class Users extends Component {
         
         return (
             <Container className={ "users-container" }>
-                <UsersComponent zRotation={ "135" }>
+                <UsersComponent>
                     { this.state.users && this.state.users.map( ( user, index ) => {
                         return (
                             <User
@@ -105,7 +122,7 @@ class Users extends Component {
                                     Math.PI / 180 ) ) }
                             >
                                 <Avatar
-                                    zRotation={ "135" }
+                                
                                 >
                                     <Image
                                         src={ user.thumbnailUrl }
@@ -124,7 +141,6 @@ class Users extends Component {
                     } ) }
                 </UsersComponent>
             </Container>
-        
         );
     }
 }

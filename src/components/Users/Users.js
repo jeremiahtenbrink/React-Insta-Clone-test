@@ -14,17 +14,19 @@ const UsersComponent = styled.div`
     transform-style: preserve-3d;
     transform: rotateX(74deg);
     
-    @media (max-width: 768px) {
-      transform: rotateX(74deg) translateX(0) translateY(300px) translateZ(0);
-    }
-    @media (max-width: 1400px) {
-        margin: 14rem 0 13rem 0;
+    
+    @media (min-width: 1200px) {
+        transform: rotateX(65deg)
     }
     @media (max-width: 1200px) {
         margin-bottom: 13rem;
+        
     }
     @media (max-width: 1000px) {
         margin-bottom: 20rem;
+    }
+    @media (max-width: 768px) {
+      transform: rotateX(74deg) translateX(0) translateY(300px) translateZ(0);
     }
     
     
@@ -64,6 +66,10 @@ const Avatar = styled.div`
     transform-origin: center;
     transform-style: preserve-3d;
     transform: rotateX(-74deg);
+    
+    @media (min-width: 1200px) {
+        transform: rotateX(-65deg)
+    }
     cursor: pointer;
     
     `;

@@ -35,14 +35,16 @@ class SearchBar extends React.Component{
           </div>
         </div>
         
-        <div className="search-bar__middle">
+        <div
+          onMouseLeave={ this.onMouseLeave }
+          className="search-bar__middle">
           
           <div
             id="search"
             className={ `search-bar__search ${ ( this.state.search ? "active" :
               "" ) }` }
             onMouseEnter={ this.onMouseEnter }
-            onMouseLeave={ this.onMouseLeave }
+          
           >
             <Form>
               <Form.Field>

@@ -136,9 +136,7 @@ class Users extends Component {
                                 y={ Math.sin( ( 18 * ( index + this.state.startingNumber ) *
                                     Math.PI / 180 ) ) }
                             >
-                                <Avatar
-                                
-                                >
+                                <Avatar>
                                     <Image
                                         src={ user.thumbnailUrl }
                                         avatar
@@ -150,7 +148,6 @@ class Users extends Component {
                                     />
                                     <span className="users-section__username">{ user.username }</span>
                                 </Avatar>
-                            
                             </User>
                         );
                     } ) }

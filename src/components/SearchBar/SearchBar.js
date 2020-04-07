@@ -57,7 +57,7 @@ class SearchBar extends React.Component{
             </Form>
           </div>
           <div
-            onMouseLeave={ this.onMouseLeave }
+            
             className="search-bar__icons">
             
             <div
